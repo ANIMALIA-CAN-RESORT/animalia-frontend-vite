@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings xmlns="https://jakarta.ee/xml/ns/persistence/orm"
+                 xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance"
+                 xsi:schemaLocation="https://jakarta.ee/xml/ns/persistence/orm
+                                     https://jakarta.ee/xml/ns/persistence/orm/orm_3_0.xsd"
+                 version="3.0">
+
+
+    <mapped-superclass class="es.puentes.residencia.Cliente" access="FIELD">
+        <attributes>
+            <basic name="dni" optional="false" />
+            <basic name="nombre" optional="false" />
+            <basic name="apellido1" optional="false" />
+            <basic name="apellido2" optional="true" />
+            <basic name="tfno" optional="false" />
+            <basic name="email" optional="true" />
+            <one-to-many name="mascotas" target-entity="es.puentes.entidades.MascotaConId" mapped-by="cliente"/>
+        </attributes>
+    </mapped-superclass>
+</entity-mappings>

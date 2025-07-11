@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Factura</title>
+<style>
+body {
+	font-family: Calibri, Arial, Helvetica, sans-serif;
+	width: 100%;
+}
+
+h1 {
+	color: blue;
+}
+
+.text-center {
+	text-align: center;
+}
+
+.text-right {
+	text-align: right;
+	padding-right: 30px;
+}
+
+.tabla {
+	width: 98%;
+}
+
+table {
+	width: 100%;
+}
+
+th {
+	border: 1px solid black;
+	background-color: rgb(240, 240, 240);
+}
+</style>
+</head>
+
+<body>
+	<div>
+		<div>
+			<h1>
+				<img alt=""
+					src="https://lh3.googleusercontent.com/uzX_xXCO78bSG6kuDpGgd94pkEe6nb0xJHnzuhdbYMf_ctsGHeoBtXmBudpWrzP__w_21A=s85" />
+				<strong>CAN RESORT Residencia de animales</strong>
+			</h1>
+		</div>
+		<div class="text-right">
+			<h4>NIT: A45684218F</h4>
+			<h4>
+				<span><strong>Factura: nº </strong><span
+					th:text="${numFactura}"></span></span>
+			</h4>
+		</div>
+	</div>
+	<hr />
+	<div>
+		<h1 class="text-center">FACTURA</h1>
+	</div>
+	<div>
+		<div>
+			<h4>
+				Paseo del Espolón 23, Santo Domingo de la Calzada (La Rioja), <span
+					th:text="${hoy}"></span>
+			</h4>
+			<h4>
+				<b>Comprador:</b><span th:text="${cliente.getNombre()}"></span>&nbsp;<span
+					th:text="${cliente.getApellidos()}"></span>
+			</h4>
+			<h4>
+				<b>DNI:</b><span th:text="${cliente.getDni().toUpperCase()}"></span>
+			</h4>
+		</div>
+	</div>
+	<hr />
+	<div>
+		<h4>
+			<b>Mascota:</b><span th:text="${mascota.getNombre().toUpperCase()}"></span>
+		</h4>
+	</div>
+	<hr />
+	<table class="tabla">
+		<thead>
+			<tr>
+				<th class="text-center">
+					<h4>
+						<b>Tipo de Prestacion</b>
+					</h4>
+				</th>
+				<th class="text-center">
+					<h4>
+						<b>Periodo</b>
+					</h4>
+				</th>
+				<th class="text-center">
+					<h4>
+						<b>Precio/día</b>
+					</h4>
+				</th>
+				<th class="text-center">
+					<h4>
+						<b>Total</b>
+					</h4>
+				</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr class="text-center" th:each="prestacion : ${prestaciones}"
+				th:class="${prestacion}" th:object="${prestacion}">
+				<td th:text="${prestacion.tipo}">Tipo</td>
+				<td class="text-center" th:text="${prestacion.periodo}">Periodo</td>
+				<td class="text-center" th:text="${prestacion.precioDiaString}"><span>
+						€</span></td>
+				<td class="text-center"
+					th:text="${prestacion.precioPrestacionString}">Precio
+					Prestacion<span>€</span>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<hr />
+	<div class="text-right">
+		<h4>
+			<span><strong>IVA (21%): </strong><span th:text="${iva}"></span></span>
+		</h4>
+		<h4>
+			<span><strong>Precio Total: </strong><span th:text="${totalFactura}"></span></span>
+		</h4>
+	</div>
+	<div>
+		<div>
+			<h1>
+				<img alt=""
+					src="https://ibb.co/CBwD8sS"
+					width="100" height="100" />
+			</h1>
+		</div>
+		<div>
+			<h4>Puede realizar el ingreso en la cuenta
+				ES60-0049-1500-05-1234567892</h4>
+		</div>
+		<hr />
+		<hr />
+	</div>
+</body>
+</html>
