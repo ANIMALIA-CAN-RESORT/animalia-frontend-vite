@@ -1,0 +1,26 @@
+<div class="row mb-2">
+  <hr class='w-100'>
+  <div class="col-10 col-sm-10 col-md-3 col-lg-2 col-xl-2 d-flex flex-column text-center" *ngIf='mascota'><b>{{mascota.nombre}}</b></div>
+  <div class="col-10 col-sm-10 col-md-3 col-lg-1 col-xl-1 d-flex flex-column text-center">
+    <a class="" data-toggle="modal" data-target="#modalPrestacion" (click)='prestacionSeleccionada.emit(prestacion)'>
+      <div *ngIf='prestacion.tipo === "Alojamiento"; else elseBlock2'>
+        <fa-icon class="alojamiento" [icon]="faBed"></fa-icon>
+      </div>
+      <ng-template #elseBlock2>
+        <fa-icon class="alimentacion" [icon]="faBone"></fa-icon>
+      </ng-template>
+    </a>
+  </div>
+  <div class="col-10 col-sm-10 col-md-3 col-lg-2 col-xl-2 d-flex flex-column text-center">{{prestacion.fechaEntrada | date: 'dd/MMM/yy' | uppercase}}</div>
+  <div class="col-10 col-sm-10 col-md-3 col-lg-2 col-xl-2 d-flex flex-column text-center">{{prestacion.fechaSalida | date: 'dd/MMM/yy' | uppercase}}</div>
+  <div class="col-10 col-sm-10 col-md-2 col-lg-1 col-xl-1 d-flex flex-column text-center">{{prestacion.jaula}}</div>
+  <div class="col-10 col-sm-10 col-md-2 col-lg-2 col-xl-2 d-flex flex-column text-center">{{prestacion.tipoComida | uppercase}}</div>
+  <div class="col-10 col-sm-10 col-md-2 col-lg-1 col-xl-1 d-flex flex-column text-center">{{prestacion.cantidadComidaDiaria}}</div>
+  <div class="col-10 col-sm-10 col-md-3 col-lg-1 col-xl-1 d-flex flex-column text-center">
+    <div *ngIf='prestacion.pagada; else elseBlock'>
+      <span>{{prestacion.precioPrestacion}} €<br><fa-icon class="pagada" [icon]="faCheck"></fa-icon></span>
+    </div>
+  </div>
+  <ng-template #elseBlock>
+    <span>{{prestacion.precioPrestacion}} €<br><fa-icon class="no-pagada" [icon]="faTimes"></fa-icon></span>
+  </ng-template>

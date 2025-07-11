@@ -1,0 +1,61 @@
+<form #prestacionForm="ngForm">
+  <div class="form-row py-2">
+    <div class="col-lg-12 col-md-12">
+      <label><b>TIPO DE PRESTACIÓN<sup class="text-danger">*</sup></b></label>&nbsp;
+      <input type="radio" name="tipo" [(ngModel)]='prestacion.tipo' value="Alimentacion" class="mr-2">Alimentación
+      <input type="radio" name="tipo" [(ngModel)]='prestacion.tipo' value="Alojamiento" checked class="mr-2">Alojamiento
+     </div>
+  </div>
+  <div class="form-row py-2">
+    <div class="col-lg-4 col-md-12">
+      <label class="mr-2"><b>MASCOTA</b></label>
+      <select name="mascota" id="mascota" [(ngModel)]='prestacion.mascota'>
+        <option [ngValue]="mascota.url" *ngFor="let mascota of mascotas">{{mascota.nombre}}</option>
+      </select>
+    </div>
+    <div class="col-lg-4 col-md-12">
+      <label><b>ENTRADA<sup class="text-danger">*</sup></b></label>
+      <input type="date" name="entrada" [(ngModel)]='prestacion.fechaEntrada' required>
+     </div>
+    <div class="col-lg-4 col-md-12">
+      <label><b>SALIDA<sup class="text-danger">*</sup></b></label>
+      <input type="date" name="salida" [(ngModel)]='prestacion.fechaSalida' required>
+     </div>    
+  </div>
+  <div class="form-row py-2">
+    <div class="col-lg-2 col-md-12">
+      <label><b>JAULA<sup class="text-danger">*</sup></b></label>
+      <select name="jaula" id="jaula" [(ngModel)]='prestacion.jaula' class="form-control" required #jaula="ngModel"
+        [ngClass]="{ 'is-invalid': jaula.invalid && (jaula.dirty || jaula.touched),
+      'is-valid': !jaula.invalid }">
+        <option [value]="jaula" *ngFor="let jaula of jaulas">{{jaula}}</option>
+      </select>
+      <div class="text-danger" *ngIf="jaula.invalid && (jaula.dirty || jaula.touched)">
+        <div *ngIf="jaula.errors.required">
+          Es obligatorio elegir la jaula
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-1 col-md-12"></div>
+      <div class="col-lg-4 col-md-12" *ngIf='prestacion.tipo == "Alimentacion"'>
+       <label class="d-flex text-center"><b>TIPO DE COMIDA<sup class="text-danger">*</sup></b></label>
+        <input type="radio" name="tipoComida" [(ngModel)]='prestacion.tipoComida' value="NORMAL" class="mr-2">Normal
+        <input type="radio" name="tipoComida" [(ngModel)]='prestacion.tipoComida' value="PREMIUM" class="mr-2 ml-2" checked>Premium
+      </div>
+      <div class="col-lg-5 col-md-12" *ngIf='prestacion.tipo == "Alimentacion"'>
+        <label class="d-flex text-center"><b>COMIDA DIARIA<sup class="text-danger">*</sup></b></label>
+        <input type="radio" name="cantidadComidaDiaria" [(ngModel)]='prestacion.cantidadComidaDiaria' value=50 class="mr-2">50 (S)
+        <input type="radio" name="cantidadComidaDiaria" [(ngModel)]='prestacion.cantidadComidaDiaria' value=100 class="mr-2 ml-2">100 (M)
+        <input type="radio" name="cantidadComidaDiaria" [(ngModel)]='prestacion.cantidadComidaDiaria' value=150 class="mr-2 ml-2">150 (L)
+        <input type="radio" name="cantidadComidaDiaria" [(ngModel)]='prestacion.cantidadComidaDiaria' value=200 class="mr-2 ml-2" checked>200 (XL)
+      </div>
+  </div>
+  <div class="form-row justify-content-between pt-5">
+    <div class="col-lg-5 col-md-12">
+      <button class="btn btn-primary" role="button" (click)="crearPrestacion()"
+        [disabled]="!prestacionForm.form.valid">
+        Crear Prestacion
+      </button>
+    </div>
+  </div>
+</form>

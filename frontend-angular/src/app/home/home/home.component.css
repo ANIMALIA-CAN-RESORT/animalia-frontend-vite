@@ -1,0 +1,16 @@
+h1 {
+  color: greenyellow;
+}
+
+h2 {
+  color: red;
+}
+.cita {
+  color:blue;
+}
+p+p {
+  color:fuchsia;
+}
+fa-icon {
+  color:greenyellow;
+}

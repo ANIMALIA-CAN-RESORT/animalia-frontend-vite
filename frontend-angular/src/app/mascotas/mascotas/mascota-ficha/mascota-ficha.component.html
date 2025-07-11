@@ -1,0 +1,59 @@
+<h2 class="text-center"><b>PROPIETARIO: {{mascota.cliente.nombre}}</b></h2>
+<form #mascotaForm="ngForm">
+  <div class="form-row py-2">
+    <div class="col-lg-4 col-md-12">
+      <label><b>CHIP<sup class="text-danger">*</sup></b></label>
+      <input type="text" class="form-control" [(ngModel)]="mascota.chip" name="chip"
+        required minlength="9" maxlength="9" #chip="ngModel" [ngClass]="{ 'is-invalid': chip.invalid && (chip.dirty || chip.touched),
+        'is-valid': !chip.invalid }"/>
+      <div class="text-danger" *ngIf="chip.invalid && (chip.dirty || chip.touched)">
+        <div *ngIf="chip.errors.required">
+            El Chip de la mascota es obligatorio
+        </div>
+        <div *ngIf="chip.errors.minlength || chip.errors.maxlength">
+          El Chip de la mascota debe tener 9 carácteres
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4 col-md-12">
+      <label><b>NOMBRE<sup class="text-danger">*</sup></b></label>
+      <input type="text" class="form-control" [(ngModel)]="mascota.nombre" name="nombre"
+        required minlength="3" #nombre="ngModel" [ngClass]="{ 'is-invalid': nombre.invalid && (nombre.dirty || nombre.touched),
+        'is-valid': !nombre.invalid }"/>
+      <div class="text-danger" *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)">
+        <div *ngIf="nombre.errors.required">
+            El Nombre de la mascota es obligatorio
+        </div>
+        <div *ngIf="nombre.errors.minlength">
+          El Nombre de la mascota debe tener al menos 3 carácteres
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4 col-md-12">
+      <label><b>RAZA</b></label>
+      <input type="text" class="form-control" [(ngModel)]="mascota.raza" name="raza"
+        minlength="3" #raza="ngModel" [ngClass]="{ 'is-invalid': raza.invalid && (raza.dirty || raza.touched),
+        'is-valid': !raza.invalid }"/>
+      <div class="text-danger" *ngIf="raza.invalid && (raza.dirty || raza.touched)">
+        <div *ngIf="raza.errors.minlength">
+          Si existe debe tener al menos 3 carácteres
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-8 col-md-12">
+      <label class="d-flex text-center"><b>TALLA<sup class="text-danger">*</sup></b></label>
+      <input type="radio" name="talla" class="mr-2" [(ngModel)]='mascota.talla' value="S" class="mr-2">S
+      <input type="radio" name="talla" class="mr-2" [(ngModel)]='mascota.talla' value="M" class="mr-2 ml-2">M
+      <input type="radio" name="talla" class="mr-2" [(ngModel)]='mascota.talla' value="L" class="mr-2 ml-2">L
+      <input type="radio" name="talla" class="mr-2" [(ngModel)]='mascota.talla' value="XL" class="mr-2 ml-2">XL
+    </div>
+    <div class="col-lg-4 col-md-12">
+      <label><b>CLIENTE</b></label>
+      <input type="text" class="form-control" [(ngModel)]="mascota.cliente.nombre + ' ' + mascota.cliente.apellido1"  name="cliente" readonly/>
+    </div>
+  </div>
+  <div class="form-row justify-content-between pt-5">
+    <button type="button" class="btn btn-success" (click)="editar()" [disabled]="!mascotaForm.form.valid">Guardar</button>
+    <button type="button" class="btn btn-danger" (click)="eliminar()">Eliminar</button>
+  </div>
+</form>

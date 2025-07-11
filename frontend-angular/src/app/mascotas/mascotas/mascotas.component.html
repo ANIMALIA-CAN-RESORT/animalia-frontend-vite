@@ -1,0 +1,37 @@
+<hr class='w-100'>
+<div class="row justify-content-end">
+  <button class="btn btn-primary text-white" routerLink="/mascotas/formulario">Nueva Mascota
+  </button>
+</div>
+<hr class='w-100'>
+<div class="row">
+  <div class="col-10 col-sm-10 col-md-3 col-lg-3 col-xl-3"><b>NOMBRE</b></div>
+  <div class="col-10 col-sm-10 col-md-3 col-lg-2 col-xl-2"><b>RAZA</b></div>
+  <div class="col-10 col-sm-10 col-md-3 col-lg-3 col-xl-3"><b>TALLA</b></div>
+  <div class="col-10 col-sm-10 col-md-3 col-lg-2 col-xl-2"><b>PROPIETARIO</b></div>
+  <div class="col-10 col-sm-10 col-md-3 col-lg-2 col-xl-2"><b>PRESTACIONES</b></div>
+</div>
+
+<div *ngFor="let mascota of mascotas">
+  <app-mascota [mascota]="mascota" (mascotaSeleccionada)="verDatos($event)"></app-mascota>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="modalMascota" tabindex="-1" role="dialog" aria-labelledby="datosMascota"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="datosMascota">Datos Completos de la Mascota</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <app-mascota-ficha *ngIf='mascotaVerDatos' [mascota]='mascotaVerDatos' (mascotaEliminar)='onMascotaEliminar($event)' (mascotaEditar)='onMascotaEditar($event)'></app-mascota-ficha>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="ngOnInit()">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,86 @@
+header {
+  margin-top: 30px;
+}
+
+header .nav {
+  min-height: 80px;
+  overflow: hidden;
+  background: #fff;
+}
+
+/*-- LOGOTIPO ---*/
+
+header .logo h2,
+header .logo span,
+header .logo p {
+  font-size: 16px;
+  display: inline-block; /*--para que os elementos se ponga uno al lado del otro--*/
+  margin: 0;
+}
+
+header .logo h2 {
+  font-weight: 900; /* -- el cogido de la fuente de google-- */
+  text-transform: uppercase;
+  color:#ef1b2d
+}
+
+header .logo h2:hover {
+  color: #23f010;
+}
+
+header .logo .color-0 {
+  color: #df0bcd;
+}
+
+header .logo p {
+  color: #dd12e4;
+}
+
+/* ------ menu ------*/
+
+header .menu {
+  padding: 0;
+}
+
+header .menu a {
+  display: block; /*--- Se transforman en elementos de bloque, por lo que siempre empiezan en una nueva línea y siempre ocupan todo el espacio disponible en la línea, aunque sus contenidos no ocupen todo el sitio ---*/
+  padding: 0 30px; /*--  0 en el eje x y 30 en el eje y--*/
+  text-decoration: none;
+  color: #fff; /*--- Texto de color blanco ---*/
+}
+
+header .menu a div span {
+  font-weight: 600;
+}
+
+/*--- Para cambiar e fondo de los enlaces ---*/
+header .menu .color-1 {
+  background-color: #3da5e2;
+}
+header .menu .color-2 {
+  background-color: #005385;
+}
+header .menu .color-3 {
+  background-color: #003855;
+}
+header .menu .color-4 {
+  background-color: #1083bd;
+}
+/*--- hover de los enlaces ---*/
+
+header .menu .color-1:hover {
+  background: #ef1b2d;
+}
+header .menu .color-2:hover {
+  background:orange;
+}
+header .menu .color-3:hover {
+  background:deeppink;
+}
+header .menu .color-4:hover {
+  background: #eef107;
+}
+
+.logueado {
+  color:darkgrey;
+}

@@ -1,0 +1,31 @@
+footer a.btn,
+footer a.btn:hover {
+  color: black;
+}
+
+a.btn-link {
+  font-size: 1.6rem;
+}
+
+.btn-link .twitter:hover {
+  color: #009deb;
+}
+
+.btn-link .gitLab:hover {
+  color: #e24329;
+}
+
+.btn-link .whatsapp:hover {
+  color: #1ada4a;
+}
+
+.btn-link .facebook:hover {
+  color: #2f1be2;
+}
+
+.btn-link .gitHub:hover {
+  color: #4d4c52;
+}
+hr {
+  border-color:#ee0cd0;
+}

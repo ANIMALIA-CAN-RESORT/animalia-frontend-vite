@@ -1,0 +1,12 @@
+<div class="row mb-2">
+  <hr class='w-100'>
+  <div class="col-10 col-sm-10 col-md-3 col-lg-3 col-xl-3"><a class="" data-toggle="modal"
+      data-target="#modalCliente" (click)='clienteSeleccionado.emit(cliente)'> {{cliente.nombre | uppercase}}&nbsp;&nbsp;<fa-icon [icon]="faEdit" class="mr-2"></fa-icon></a></div>
+  <div class="col-10 col-sm-10 col-md-3 col-lg-2 col-xl-2">{{cliente.apellido1 | titlecase}}</div>
+  <div class="col-10 col-sm-10 col-md-3 col-lg-3 col-xl-3">{{cliente.apellido2 | titlecase}}</div>
+  <div class="col-10 col-sm-10 col-md-2 col-lg-2 col-xl-2">{{cliente.tfno}}</div>
+  <div class="col-10 col-sm-10 col-md-3 col-lg-2 col-xl-2">
+      <button class="btn btn-success" [routerLink]="['/clientes/mascotas', cliente.id]">Mascotas</button>
+  </div>
+</div>
+

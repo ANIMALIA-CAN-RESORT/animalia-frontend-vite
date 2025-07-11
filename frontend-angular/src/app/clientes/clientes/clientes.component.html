@@ -1,0 +1,37 @@
+<hr class='w-100'>
+<div class="row justify-content-end">
+  <button class="btn btn-primary text-white" routerLink="/clientes/formulario">Nuevo Cliente</button>
+</div>
+<hr class='w-100'>
+<div class="row">
+  <div class="col-10 col-sm-10 col-md-3 col-lg-3 col-xl-3"><b>NOMBRE</b></div>
+  <div class="col-10 col-sm-10 col-md-3 col-lg-2 col-xl-2"><b>APELLIDO 1</b></div>
+  <div class="col-10 col-sm-10 col-md-3 col-lg-3 col-xl-3"><b>APELLIDO 2</b></div>
+  <div class="col-10 col-sm-10 col-md-3 col-lg-2 col-xl-2"><b>TELÉFONO</b></div>
+  <div class="col-10 col-sm-10 col-md-3 col-lg-2 col-xl-2"><b>MASCOTAS</b></div>
+</div>
+
+<div *ngFor="let cliente of clientes">
+  <app-cliente [cliente]="cliente" (clienteSeleccionado)="verDatos($event)"></app-cliente>
+</div>
+<!-- Modal cliente-->
+<div class="modal fade" id="modalCliente" tabindex="-1" role="dialog" aria-labelledby="datosCliente"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="datosCliente"><b>Datos Completos del Cliente</b> </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <app-cliente-ficha *ngIf='clienteVerDatos' [cliente]='clienteVerDatos' (clienteEliminar)='onClienteEliminar($event)' (clienteEditar)='onClienteEditar($event)'></app-cliente-ficha>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="ngOnInit()">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+

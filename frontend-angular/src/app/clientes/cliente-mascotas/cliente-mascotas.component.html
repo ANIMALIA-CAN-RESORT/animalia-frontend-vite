@@ -1,0 +1,20 @@
+<div *ngFor="let mascota of mascotas">
+  <div class="card">
+    <img class="card-img-top" alt="">
+    <div class="card-body">
+      <h4 class="card-title text-center"><b>{{mascota.nombre}}</b></h4>
+      <p class="card-text">
+        <span class="mr-2"><b>Raza:</b></span>
+        <span>{{mascota.raza}}</span>
+      </p>
+      <p class="card-text">
+        <span class="mr-2"><b>Talla:</b></span>
+        <span>{{mascota.talla}}</span>
+      </p>
+      <p class="card-text">
+        <span class="mr-2"><b>Chip:</b></span>
+        <span>{{mascota.chip}}</span>
+      </p>
+    </div>
+  </div>   
+</div>

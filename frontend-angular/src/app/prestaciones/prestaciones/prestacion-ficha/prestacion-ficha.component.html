@@ -1,0 +1,44 @@
+<h2 class="text-center" ><b>{{prestacion.mascota.nombre}}</b></h2>
+<form #prestacionForm="ngForm">
+  <div class="form-row py-2">
+    <div class="col-lg-4 col-md-12 mr-4"> 
+      <label><b>ENTRADA<sup class="text-danger">*</sup></b></label>
+      <input type="date" name="entrada" [(ngModel)]='prestacion.fechaEntrada' required>
+     </div>
+    <div class="col-lg-4 col-md-12">
+      <label><b>SALIDA<sup class="text-danger">*</sup></b></label>
+      <input type="date" name="salida" [(ngModel)]='prestacion.fechaSalida' required>
+     </div>    
+  </div>
+  <div class="form-row py-2" *ngIf='prestacion.tipo == "Alimentacion"'>
+    <div class="col-lg-4 col-md-12">
+      <label><b>TIPO DE COMIDA<sup class="text-danger">*</sup></b></label>
+      <input type="radio" name="tipoComida" [(ngModel)]='prestacion.tipoComida' value="NORMAL">Normal
+      <input type="radio" name="tipoComida" [(ngModel)]='prestacion.tipoComida' value="PREMIUM">Premium
+    </div>
+    <div class="col-lg-8 col-md-12">
+      <label class="d-flex text-center"><b>COMIDA DIARIA<sup class="text-danger">*</sup></b></label>
+      <input type="radio" name="cantidadComidaDiaria" [(ngModel)]='prestacion.cantidadComidaDiaria' value=50>50(S)
+      <input type="radio" name="cantidadComidaDiaria" [(ngModel)]='prestacion.cantidadComidaDiaria' value=100>100(M)
+      <input type="radio" name="cantidadComidaDiaria" [(ngModel)]='prestacion.cantidadComidaDiaria' value=150>150(L)
+      <input type="radio" name="cantidadComidaDiaria" [(ngModel)]='prestacion.cantidadComidaDiaria' value=200>200(XL)
+    </div>
+  </div>
+  <div class="form-row py-2" *ngIf='prestacion.tipo == "Alojamiento"'>
+    <div class="col-lg-4 col-md-12">
+      <label><b>JAULA<sup class="text-danger">*</sup></b></label>
+      <select name="jaula" id="jaula" [(ngModel)]='prestacion.jaula'>
+        <option [value]="jaula" *ngFor="let jaula of jaulas">{{jaula}}</option>
+      </select>
+    </div>
+  </div>
+  <div class="form-row py-2">
+    <input type="checkbox" name="pagada" [(ngModel)]='prestacion.pagada' value='prestacion.pagada'>&nbsp;Pagada
+  </div>
+  <div class="form-row justify-content-between pt-5">
+    <button type="button" class="btn btn-success" (click)="editar()"
+      [disabled]="!prestacionForm.form.valid">Guardar</button>
+    <button class="btn btn-primary">Precio: {{prestacion.precioPrestacion}} €</button>
+    <button type="button" class="btn btn-danger" (click)="eliminar()">Eliminar</button>
+  </div>
+</form>

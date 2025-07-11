@@ -1,0 +1,91 @@
+<form #clienteForm="ngForm">
+  <div class="form-row py-2">
+    <div class="col-lg-4 col-md-12">
+      <label>DNI <sup class="text-danger">*</sup></label>
+      <input type="text" class="form-control" [(ngModel)]="cliente.dni" placeholder="DNI del Cliente" name="dni"
+        required minlength="9" maxlength="9" #dni="ngModel" [ngClass]="{ 'is-invalid': dni.invalid && (dni.dirty || dni.touched),
+        'is-valid': !dni.invalid }"/>
+      <div class="text-danger" *ngIf="dni.invalid && (dni.dirty || dni.touched)">
+        <div *ngIf="dni.errors.required">
+            El DNI del Cliente es obligatorio
+        </div>
+        <div *ngIf="dni.errors.minlength || dni.errors.maxlength">
+          El DNI del Cliente debe tener 9 carácteres
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4 col-md-12">
+      <label>Nombre <sup class="text-danger">*</sup></label>
+      <input type="text" class="form-control" [(ngModel)]="cliente.nombre" placeholder="Nombre del Cliente" name="nombre"
+        required minlength="3" #nombre="ngModel" [ngClass]="{ 'is-invalid': nombre.invalid && (nombre.dirty || nombre.touched),
+        'is-valid': !nombre.invalid }"/>
+      <div class="text-danger" *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)">
+        <div *ngIf="nombre.errors.required">
+            El Nombre del Cliente es obligatorio
+        </div>
+        <div *ngIf="nombre.errors.minlength">
+          El Nombre del Cliente debe tener al menos 3 carácteres
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4 col-md-12">
+      <label>Apellido 1<sup class="text-danger">*</sup></label>
+      <input type="text" class="form-control" [(ngModel)]="cliente.apellido1" placeholder="Primer apellido del Cliente" name="apellido1"
+        required minlength="3" #apellido1="ngModel" [ngClass]="{ 'is-invalid': apellido1.invalid && (apellido1.dirty || apellido1.touched),
+        'is-valid': !apellido1.invalid }"/>
+      <div class="text-danger" *ngIf="apellido1.invalid && (apellido1.dirty || apellido1.touched)">
+        <div *ngIf="apellido1.errors.required">
+            El primer apellido del Cliente es obligatorio
+        </div>
+        <div *ngIf="apellido1.errors.minlength">
+          El primer apellido del Cliente debe tener al menos 3 carácteres
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4 col-md-12">
+      <label>Apellido 2</label>
+      <input type="text" class="form-control" [(ngModel)]="cliente.apellido2" placeholder="Segundo apellido del Cliente" name="apellido1"
+        minlength="3" #apellido2="ngModel" [ngClass]="{ 'is-invalid': apellido2.invalid && (apellido2.dirty || apellido2.touched),
+        'is-valid': !apellido2.invalid }"/>
+      <div class="text-danger" *ngIf="apellido2.invalid && (apellido2.dirty || apellido2.touched)">
+        <div *ngIf="apellido2.errors.minlength">
+          Si existe debe tener al menos 3 carácteres
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4 col-md-12">
+      <label>Teléfono <sup class="text-danger">*</sup></label>
+      <input type="tel" class="form-control" [(ngModel)]="cliente.tfno" placeholder="Teléfono del Cliente" name="telefono"
+        required minlength="9" maxlength="9" #telefono="ngModel" [ngClass]="{ 'is-invalid': telefono.invalid && (telefono.dirty || telefono.touched),
+        'is-valid': !telefono.invalid }"/>
+      <div class="text-danger" *ngIf="telefono.invalid && (telefono.dirty || telefono.touched)">
+        <div *ngIf="telefono.errors.required">
+            El Teléfono del Cliente es obligatorio
+        </div>
+        <div *ngIf="telefono.errors.minlength || telefono.errors.maxlength">
+          El Teléfono del Cliente debe tener 9 carácteres
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4 col-md-12">
+      <label>Email</label>
+      <input type="email" class="form-control" [(ngModel)]="cliente.email" placeholder="Email del Cliente" name="email"
+        #email="ngModel" [ngClass]="{ 'is-invalid': email.invalid && (email.dirty || email.touched),
+        'is-valid': !email.invalid }"/>
+      <div class="text-danger" *ngIf="email.invalid && (email.dirty || email.touched)">
+        <div *ngIf="email.errors.email">
+          Introduzca un email valido ("@")
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="form-row justify-content-between pt-5">
+    <div class="col-lg-5 col-md-12">
+      <button class="btn btn-primary" role="button"
+      (click)="crearCliente()"
+        [disabled]="!clienteForm.form.valid">
+        Crear Cliente
+      </button>
+    </div>
+  </div>
+</form>

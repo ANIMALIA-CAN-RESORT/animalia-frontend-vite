@@ -1,0 +1,65 @@
+<form #usuarioForm="ngForm">
+  <div class="form-row py-2">
+    <div class="col-lg-6 col-md-12">
+      <label><b>NOMBRE<sup class="text-danger">*</sup></b></label>
+      <input type="text" class="form-control" [(ngModel)]="usuario.nombre" placeholder="Nombre del usuario" name="nombre"
+        required #nombre="ngModel" [ngClass]="{ 'is-invalid': nombre.invalid && (nombre.dirty || nombre.touched),
+        'is-valid': !nombre.invalid }"/>
+      <div class="text-danger" *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)">
+        <div *ngIf="nombre.errors.required">
+            El nombre del usuario es obligatorio
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-6 col-md-12">
+      <label><b>APELLIDO<sup class="text-danger">*</sup></b></label>
+      <input type="text" class="form-control" [(ngModel)]="usuario.apellido" placeholder="Apellido del usuario" name="apellido"
+        required #apellido="ngModel" [ngClass]="{ 'is-invalid': apellido.invalid && (apellido.dirty || apellido.touched),
+        'is-valid': !apellido.invalid }"/>
+      <div class="text-danger" *ngIf="apellido.invalid && (apellido.dirty || apellido.touched)">
+        <div *ngIf="apellido.errors.required">
+            El apellido del usuario es obligatorio
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-6 col-md-12">
+      <label><b>PAIS<sup class="text-danger">*</sup></b></label>
+      <input type="text" class="form-control" [(ngModel)]="usuario.pais" placeholder="Pais del usuario" name="pais"
+        required #pais="ngModel" [ngClass]="{ 'is-invalid': pais.invalid && (pais.dirty || pais.touched),
+        'is-valid': !pais.invalid }"/>
+      <div class="text-danger" *ngIf="pais.invalid && (pais.dirty || pais.touched)">
+        <div *ngIf="pais.errors.required">
+            El pais del usuario es obligatorio
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-6 col-md-12">
+      <label><b>USERNAME<sup class="text-danger">*</sup></b></label>
+      <input type="email" class="form-control" [(ngModel)]="usuario.username" placeholder="Username del usuario" name="username"
+        required #username="ngModel" [ngClass]="{ 'is-invalid': username.invalid && (username.dirty || username.touched),
+        'is-valid': !username.invalid }"/>
+      <div class="text-danger" *ngIf="username.invalid && (username.dirty || username.touched)">
+        <div *ngIf="username.errors.required">
+            El USERNAME del usuario es obligatorio
+        </div>
+        <div *ngIf="username.errors.email">
+          Debe introducir un email válido ("@")
+      </div>
+      </div>
+    </div>
+    <div class="col-lg-6 col-md-12">
+      <label><b>PASSWORD<sup class="text-danger">*</sup></b></label>
+      <input type="text"  placeholder="Password no modificable" name="password" readonly/>
+      
+    </div>
+    <div class="col-lg-6 col-md-12">
+      <label><b>ROLES DE USUARIO<sup class="text-danger">*</sup></b></label><br>
+      <input type="radio" name="tipo" [(ngModel)]='usuario.rol' value="ADMIN" class="mr-2">ADMIN
+      <input type="radio" name="tipo" [(ngModel)]='usuario.rol' value="USER" class="mr-2 ml-2" checked required>USER
+    </div>
+  </div>
+  <div class="form-row justify-content-between pt-5">
+    <button type="button" class="btn btn-success" (click)="editar()" [disabled]="!usuarioForm.form.valid">Guardar</button>
+    <button type="button" class="btn btn-danger" (click)="eliminar()">Eliminar</button>
+  </div>
+</form>
